@@ -13,64 +13,49 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-public class MyController {
+public class UserController {
 
     private final UserService userService;
 
     @Autowired
-    public MyController(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
-
     @RequestMapping("/")
     public ModelAndView showAllUsers(ModelAndView modelAndView) {
-
         List<User> allUsers = userService.getAllUsers();
         modelAndView.setViewName("all-users");
-
         modelAndView.addObject("allUsers", allUsers);
-
         return modelAndView;
     }
 
     @RequestMapping("/addNewUser")
     public ModelAndView addNewUser(ModelAndView modelAndView) {
-
         User user = new User();
         modelAndView.setViewName("user-info");
-
         modelAndView.addObject("user", user);
-
         return modelAndView;
     }
 
     @RequestMapping("/saveUser")
     public String saveUser(@ModelAttribute("user") User user) {
-
         userService.saveUser(user);
-
         return "redirect:/";
     }
 
-
     @RequestMapping("/updateInfo")
     public String updateUser(@RequestParam("userId") int id, Model model) {
-
         User user = userService.getUser(id);
         model.addAttribute("user", user);
-
         return "user-info";
     }
 
     @RequestMapping("/deleteUser")
     public String deleteUser(@RequestParam("userId") int id) {
-
         userService.deleteUser(id);
-
         return "redirect:/";
 
     }
-
 
 }

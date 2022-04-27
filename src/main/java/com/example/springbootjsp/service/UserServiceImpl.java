@@ -12,7 +12,6 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-
     private final UserDAO userDAO;
 
     @Autowired
@@ -20,14 +19,11 @@ public class UserServiceImpl implements UserService {
         this.userDAO = userDAO;
     }
 
-
     @Override
     @Transactional
     public List<User> getAllUsers() {
-
         return userDAO.getAllUsers();
     }
-
 
     @Override
     @Transactional
@@ -44,8 +40,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void deleteUser(int id) {
-
         userDAO.deleteUser(id);
     }
-}
 
+}

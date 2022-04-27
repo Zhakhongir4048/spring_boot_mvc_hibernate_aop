@@ -12,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
@@ -51,7 +50,4 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-
 }
-
-

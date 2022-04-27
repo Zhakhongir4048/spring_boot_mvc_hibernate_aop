@@ -9,48 +9,43 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-@Repository()
-public class UserDAOImpl implements UserDAO {  // Класс, который ответственен за работу с Базой данных
+@Repository
+// Класс, который ответственен за работу с Базой данных
+public class UserDAOImpl implements UserDAO {
 
+    private final EntityManager entityManager;
 
     @Autowired
-    private EntityManager entityManager;
-
+    public UserDAOImpl(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 
     @Override
     public List<User> getAllUsers() {
-
         Session session = entityManager.unwrap(Session.class);
         Query<User> query = session.createQuery("from User  ", User.class);
-        List<User> allUsers = query.getResultList();
-
-
-        return allUsers;
+        return query.getResultList();
     }
 
     @Override
     public void saveUser(User user) {
-
         Session session = entityManager.unwrap(Session.class);
-
         session.saveOrUpdate(user);
-
     }
 
     @Override
     public User getUser(int id) {
         Session session = entityManager.unwrap(Session.class);
-
-        User user = session.get(User.class, id);
-        return user;
+        return session.get(User.class, id);
     }
 
     @Override
     public void deleteUser(int id) {
         Session session = entityManager.unwrap(Session.class);
-        Query<User> query = session.createQuery("delete from User " +
+        Query query = session.createQuery("delete from User " +
                 "where id =:userId");
         query.setParameter("userId", id);
         query.executeUpdate();
     }
+
 }

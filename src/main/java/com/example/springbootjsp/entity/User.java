@@ -4,31 +4,25 @@ package com.example.springbootjsp.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name ="user_list")
+@Table(name = "user_list")
 public class User {
 
-
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-
 
     @Column(name = "name")
     private String name;
 
-
     @Column(name = "surname")
-    private  String surname;
-
+    private String surname;
 
     @Column(name = "department")
     private String department;
 
-
     @Column(name = "salary")
     private int salary;
-
 
     public User() {
     }
@@ -39,7 +33,6 @@ public class User {
         this.department = department;
         this.salary = salary;
     }
-
 
     public int getId() {
         return id;
@@ -80,6 +73,16 @@ public class User {
     public void setSalary(int salary) {
         this.salary = salary;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", department='" + department + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
+
 }
-
-
