@@ -33,12 +33,10 @@
             <td>${users.surname}</td>
             <td>${users.department}</td>
             <td>${users.salary}</td>
-                <%--            Кнопка для Update--%>
             <td>
                 <input type="button" value="Update"
                        onclick="window.location.href = '${updateButton}'"/>
 
-                    <%--            Кнопка для Delete--%>
                 <input type="button" value="Delete"
                        onclick="window.location.href = '${deleteButton}'"/>
             </td>
@@ -48,7 +46,6 @@
 
 <br>
 
-<%--               Кнопка для Add--%>
 <input type="button" value="Add"
        onclick="window.location.href = 'addNewUser'"/>
 
